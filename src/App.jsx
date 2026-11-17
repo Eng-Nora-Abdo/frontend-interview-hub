@@ -246,16 +246,16 @@ export default function App() {
             </div>
             <div>
               <p className="font-semibold text-slate-200">
-                💡 نصيحة إنترفيو الجافاسكريبت:
+                💡 نصيحة الإنترفيو:
               </p>
               <p className="text-slate-400 text-xs mt-0.5">
-                ركّز دايماً على المفاهيم الجوهرية زي الـ Event Loop، الـ Closures، وفروق الـ this والـ Scope، لأنها أكثر أسئلة بتحدد عمق فهم المطور.
+                ركّز دايماً على المفاهيم الجوهرية (Event Loop, Closures, Virtual DOM, Hooks Lifecycle)، واشرح الفكرة ببساطة أولاً ثم ادعم إجابتك بأمثلة كود واقعية.
               </p>
             </div>
           </div>
 
           <div className="text-xs text-slate-400 shrink-0 font-mono" dir="ltr">
-            {questions.length} JS Questions loaded
+            {questions.length} Frontend Questions loaded
           </div>
         </div>
 

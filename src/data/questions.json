@@ -10,7 +10,13 @@
       "let و const: بيكونوا Block-scoped، وبيدخلوا في الـ Temporal Dead Zone (TDZ) لو استخدمناهم قبل سطر التعريف.",
       "let ينفع قيمتها تتغير، إنما const مينفعش نعيد تعيينها (Reassign)."
     ],
-    "keywords": ["Function-scoped", "Block-scoped", "Hoisting", "TDZ", "ReferenceError"],
+    "keywords": [
+      "Function-scoped",
+      "Block-scoped",
+      "Hoisting",
+      "TDZ",
+      "ReferenceError"
+    ],
     "code": "console.log(a); // undefined\nvar a = 5;\n\nconsole.log(b); // ReferenceError\nlet b = 10;"
   },
   {
@@ -24,7 +30,13 @@
       "Reference Types (Object, Array, Function): بتتخزن وتتنسخ By Reference في الـ Memory.",
       "معلومة إنترفيو: typeof null بترجع 'object' (Bug قديم)، وبنفحص الـ Array بـ Array.isArray()."
     ],
-    "keywords": ["Primitive", "Reference", "By Value", "By Reference", "Array.isArray"],
+    "keywords": [
+      "Primitive",
+      "Reference",
+      "By Value",
+      "By Reference",
+      "Array.isArray"
+    ],
     "code": "let obj1 = { name: 'Nora' };\nlet obj2 = obj1;\nobj2.name = 'Sara'; // obj1.name بقت Sara"
   },
   {
@@ -37,7 +49,11 @@
       "== (Loose Equality): بتقارن القيمة بس وبتعمل Type Coercion (تحويل تلقائي للنوع).",
       "=== (Strict Equality): بتقارن القيمة والنوع مع بعض من غير تحويل، ودي الأصح دايماً."
     ],
-    "keywords": ["Loose Equality", "Strict Equality", "Type Coercion"],
+    "keywords": [
+      "Loose Equality",
+      "Strict Equality",
+      "Type Coercion"
+    ],
     "code": "console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false"
   },
   {
@@ -50,7 +66,12 @@
       "الـ Inner Function بتحتفظ بالوصول لمتغيرات الـ Outer Function حتى بعد انتهاء تنفيذها.",
       "بنستخدمه في حماية البيانات (Data Privacy)، والـ Memoization، وبناء دوال زي Debounce."
     ],
-    "keywords": ["Lexical Scope", "Inner Function", "Data Privacy", "State Persistence"],
+    "keywords": [
+      "Lexical Scope",
+      "Inner Function",
+      "Data Privacy",
+      "State Persistence"
+    ],
     "code": "function createCounter() {\n  let count = 0;\n  return () => ++count;\n}\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2"
   },
   {
@@ -64,7 +85,13 @@
       "العمليات المؤجلة بتروح للـ Web APIs ولما تجهز بتدخل Microtask Queue (زي Promise) أو Macrotask Queue (زي setTimeout).",
       "أول ما الـ Call Stack يفضى، الـ Event Loop بيخلص كل الـ Microtasks الأول قبل ما ينفذ أي Macrotask."
     ],
-    "keywords": ["Single-threaded", "Call Stack", "Web APIs", "Microtask Queue", "Macrotask Queue"],
+    "keywords": [
+      "Single-threaded",
+      "Call Stack",
+      "Web APIs",
+      "Microtask Queue",
+      "Macrotask Queue"
+    ],
     "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');\n// Output: 1, 4, 3, 2"
   },
   {
@@ -78,7 +105,12 @@
       "بتحل مشكلة الـ Callback Hell وبتسهل القراءة جداً.",
       "بنعالج الأخطاء في async/await باستخدام try/catch بدل .then() و .catch()."
     ],
-    "keywords": ["Syntactic Sugar", "Callback Hell", "Readability", "try/catch"],
+    "keywords": [
+      "Syntactic Sugar",
+      "Callback Hell",
+      "Readability",
+      "try/catch"
+    ],
     "code": "async function getData() {\n  try {\n    const res = await fetch('/api/user');\n    return await res.json();\n  } catch (err) {\n    console.error(err);\n  }\n}"
   },
   {
@@ -92,7 +124,12 @@
       "Promise.allSettled: بتستنى الكل يخلص وترجع حالة كل واحدة (fulfilled أو rejected).",
       "Promise.race: بترجع نتيجة أول Promise يخلص سواء نجح أو فشل."
     ],
-    "keywords": ["Fail-fast", "Fulfilled", "Rejected", "Concurrent Requests"],
+    "keywords": [
+      "Fail-fast",
+      "Fulfilled",
+      "Rejected",
+      "Concurrent Requests"
+    ],
     "code": "const results = await Promise.allSettled([fetchA(), fetchB()]);"
   },
   {
@@ -105,7 +142,12 @@
       "Shallow Copy ({...obj} أو Object.assign): بتنسخ Top-level properties بس، وأي Nested Object جوا بيفضل مرتبط بنفس الـ Reference.",
       "Deep Copy (structuredClone(obj)): بتنسخ كل المستويات المتداخلة نسخة مستقلة في الـ Memory."
     ],
-    "keywords": ["Spread Operator", "Top-level properties", "Nested Objects", "structuredClone"],
+    "keywords": [
+      "Spread Operator",
+      "Top-level properties",
+      "Nested Objects",
+      "structuredClone"
+    ],
     "code": "const shallow = { ...original };\nconst deep = structuredClone(original);"
   },
   {
@@ -118,7 +160,12 @@
       "Regular Function: قيمة this بتتحدد وقت النداء (Execution Context) حسب الـ Caller.",
       "Arrow Function: ملهاش this خاصة بيها، بتورثها من الـ Lexical Scope (الـ Parent Scope)."
     ],
-    "keywords": ["Execution Context", "Caller", "Lexical Scope", "Arrow Function"],
+    "keywords": [
+      "Execution Context",
+      "Caller",
+      "Lexical Scope",
+      "Arrow Function"
+    ],
     "code": "const user = {\n  name: 'Nora',\n  regular() { return this.name; }, // 'Nora'\n  arrow: () => this.name         // undefined\n};"
   },
   {
@@ -132,7 +179,11 @@
       "apply: بتشغل الدالة فوراً بس بتبعت الـ Arguments جوا Array.",
       "bind: بترجع New Function مربوطة بالـ this دي عشان تشغليها لاحقاً."
     ],
-    "keywords": ["Explicit Binding", "Immediate Execution", "Returns New Function"],
+    "keywords": [
+      "Explicit Binding",
+      "Immediate Execution",
+      "Returns New Function"
+    ],
     "code": "greet.call(user, 'Cairo');\ngreet.apply(user, ['Cairo']);\nconst fn = greet.bind(user, 'Cairo');\nfn();"
   },
   {
@@ -148,7 +199,12 @@
       "find: بترجع أول عنصر بس يحقق الشرط وتوقف بحث.",
       "reduce: بتجمع العناصر كلها في Single Value."
     ],
-    "keywords": ["Immutability", "New Array", "First Match", "Single Value"],
+    "keywords": [
+      "Immutability",
+      "New Array",
+      "First Match",
+      "Single Value"
+    ],
     "code": "const nums = [1, 2, 3, 4];\nconst doubled = nums.map(n => n * 2);        // [2, 4, 6, 8]\nconst evens = nums.filter(n => n % 2 === 0); // [2, 4]\nconst first = nums.find(n => n % 2 === 0);   // 2\nconst sum = nums.reduce((acc, n) => acc + n, 0); // 10"
   },
   {
@@ -162,7 +218,11 @@
       "Spread (...): بتفرد عناصر Array أو Object جوا واحد جديد (لعمل نسخة أو دمج).",
       "Rest (...): بتجمع باقي الـ Arguments في Array واحدة جوا الدالة."
     ],
-    "keywords": ["Destructuring", "Spread Operator", "Rest Parameters"],
+    "keywords": [
+      "Destructuring",
+      "Spread Operator",
+      "Rest Parameters"
+    ],
     "code": "const { name, role } = user;\nconst merged = [...arr1, ...arr2];\nfunction sum(...nums) { return nums.reduce((a, b) => a + b, 0); }"
   },
   {
@@ -176,7 +236,12 @@
       "Event Delegation: بنحط Listener واحد على الأب ونعرف مين اتداس عليه بـ event.target.",
       "فايدته: توفير الـ Memory وتحسين الأداء، وبيشتغل مع العناصر المضافة ديناميكياً."
     ],
-    "keywords": ["Event Bubbling", "Event Delegation", "event.target", "stopPropagation"],
+    "keywords": [
+      "Event Bubbling",
+      "Event Delegation",
+      "event.target",
+      "stopPropagation"
+    ],
     "code": "ul.addEventListener('click', (e) => {\n  if (e.target.tagName === 'LI') console.log(e.target.textContent);\n});"
   },
   {
@@ -189,7 +254,12 @@
       "Debouncing: بيأجل التنفيذ لحد ما الحدث يوقف لمدة محددة (ممتاز للـ Search Input).",
       "Throttling: بينفذ الدالة مرة واحدة كل فترة زمنية ثابتة مهما الحدث اتكرر (ممتاز للـ Scroll)."
     ],
-    "keywords": ["Debouncing", "Throttling", "Rate Limiting", "clearTimeout"],
+    "keywords": [
+      "Debouncing",
+      "Throttling",
+      "Rate Limiting",
+      "clearTimeout"
+    ],
     "code": "function debounce(fn, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n}"
   },
   {
@@ -203,7 +273,12 @@
       "sessionStorage: بتنتهي أول ما تقفلي الـ Tab.",
       "Cookies: صغيرة (~4KB)، ليها تاريخ انتهاء، وبتتبعت مع كل HTTP Request (ممتازة للـ Auth مع HttpOnly)."
     ],
-    "keywords": ["Persistence", "Tab-scoped", "HTTP Requests", "HttpOnly"],
+    "keywords": [
+      "Persistence",
+      "Tab-scoped",
+      "HTTP Requests",
+      "HttpOnly"
+    ],
     "code": "localStorage.setItem('theme', 'dark');\nconst theme = localStorage.getItem('theme');"
   },
   {
@@ -216,7 +291,11 @@
       "مع var: اللوب بتخلص قبل ما setTimeout يشتغل، وكلهم بيشاوروا على نفس الـ i فيطبع 3 تلات مرات.",
       "مع let: لأنها Block-scoped، كل لفة ليها نسخة مستقلة فيطبع 0, 1, 2."
     ],
-    "keywords": ["Block Scope", "Closure", "Loop Scope"],
+    "keywords": [
+      "Block Scope",
+      "Closure",
+      "Loop Scope"
+    ],
     "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100); // 3, 3, 3\n}\nfor (let j = 0; j < 3; j++) {\n  setTimeout(() => console.log(j), 100); // 0, 1, 2\n}"
   },
   {
@@ -230,7 +309,11 @@
       "1 + 2 + '3': بتجمع 1+2 الأول (3) وبعدين تدمجها مع '3' فتطلع '33'.",
       "+'10' + 5: الـ Unary Plus بتحول '10' لرقم 10، فالناتج 15."
     ],
-    "keywords": ["Type Coercion", "Unary Plus", "Operator Precedence"],
+    "keywords": [
+      "Type Coercion",
+      "Unary Plus",
+      "Operator Precedence"
+    ],
     "code": "console.log(1 + '2' + 3); // '123'\nconsole.log(1 + 2 + '3'); // '33'\nconsole.log(+'10' + 5);   // 15"
   },
   {
@@ -243,7 +326,11 @@
       "أسرع طريقة حديثة هي [...new Set(arr)].",
       "أو نستخدم filter مع indexOf لو مطلوب من غير Set."
     ],
-    "keywords": ["Set", "Spread Operator", "Unique Values"],
+    "keywords": [
+      "Set",
+      "Spread Operator",
+      "Unique Values"
+    ],
     "code": "const arr = [1, 2, 2, 3, 4, 4];\nconst unique = [...new Set(arr)]; // [1, 2, 3, 4]"
   },
   {
@@ -256,7 +343,11 @@
       "undefined: القيمة الافتراضية لمتغير متعرف من غير قيمة، أو خاصية مش موجودة في Object.",
       "null: قيمة مقصودة بتحطها المبرمجة عشان تعبر عن لا شيء (Intentional absence of value)."
     ],
-    "keywords": ["Default value", "Intentional empty value", "typeof null"],
+    "keywords": [
+      "Default value",
+      "Intentional empty value",
+      "typeof null"
+    ],
     "code": "let a;\nconsole.log(a); // undefined\nlet b = null;\nconsole.log(b); // null"
   },
   {
@@ -270,7 +361,12 @@
       "||: بترجع القيمة التانية لو الأولى أي Falsy value (فلو الرقم 0 هتتجاهله).",
       "?? (Nullish Coalescing): بترجع القيمة التانية بس لو الأولى null أو undefined."
     ],
-    "keywords": ["Falsy values", "Nullish Coalescing (??)", "Short-circuiting", "Optional Chaining (?.)"],
+    "keywords": [
+      "Falsy values",
+      "Nullish Coalescing (??)",
+      "Short-circuiting",
+      "Optional Chaining (?.)"
+    ],
     "code": "const count = 0;\nconsole.log(count || 10); // 10\nconsole.log(count ?? 10); // 0"
   },
   {
@@ -283,7 +379,12 @@
       "Higher-Order Function (HOF): دالة بتاخد دالة كـ Argument أو بترجع دالة (زي map و filter).",
       "Pure Function: دالة مفيش ليها Side Effects (مبتعدلش متغيرات خارجية) ونفس الـ Input دايماً يرجع نفس الـ Output."
     ],
-    "keywords": ["Higher-Order Function", "Pure Function", "No Side Effects", "Deterministic"],
+    "keywords": [
+      "Higher-Order Function",
+      "Pure Function",
+      "No Side Effects",
+      "Deterministic"
+    ],
     "code": "const add = (a, b) => a + b; // Pure Function\nconst doubled = [1, 2, 3].map(n => n * 2); // map is a HOF"
   },
   {
@@ -296,7 +397,11 @@
       "Default Export: قيمة واحدة رئيسية من الملف، بنعملها import من غير أقواس {} وبأي اسم.",
       "Named Export: كذا دالة أو Component من نفس الملف، لازم نعملهم import بنفس الاسم جوا {}."
     ],
-    "keywords": ["ES Modules", "Named Export", "Default Export"],
+    "keywords": [
+      "ES Modules",
+      "Named Export",
+      "Default Export"
+    ],
     "code": "// Named\nexport const API_URL = '...';\nimport { API_URL } from './config';\n\n// Default\nexport default Button;\nimport MyButton from './Button';"
   },
   {
@@ -309,6 +414,244 @@
       "كل Object في JS ليه مرجع مخفي اسمه Prototype.",
       "لو دورتي على خاصية ومش موجودة في الـ Object، JS بتدور عليها في الـ Prototype Chain لحد ما تلاقيها أو توصل لـ null."
     ],
-    "keywords": ["Prototype Chain", "Inheritance", "Object.prototype"]
+    "keywords": [
+      "Prototype Chain",
+      "Inheritance",
+      "Object.prototype"
+    ]
+  },
+  {
+    "id": 24,
+    "category": "React",
+    "topic": "Core Concepts",
+    "question": "إيه هو الـ Virtual DOM وإزاي React بيحدث الصفحة؟",
+    "simpleExplanation": "نسخة خفيفة في الذاكرة من الصفحة الحقيقية؛ React بيقارن النسخة القديمة بالجديدة ويحدث الجزء اللي اتغير بس بدل ما يعيد رسم الصفحة كلها.",
+    "interviewPoints": [
+      "الـ Virtual DOM هو تمثيل خفيف (JS Object) للـ Real DOM في الـ Memory.",
+      "لما الـ State تتغير، React بيعمل Virtual DOM جديد ويقارنه بالقديم بعملية اسمها Diffing.",
+      "بعدها بيحدث الأجزاء اللي اتغيرت بس في الـ Real DOM (عملية اسمها Reconciliation)."
+    ],
+    "keywords": [
+      "Virtual DOM",
+      "Diffing Algorithm",
+      "Reconciliation",
+      "Performance"
+    ]
+  },
+  {
+    "id": 25,
+    "category": "React",
+    "topic": "Props & State",
+    "question": "ما الفرق بين Props و State؟",
+    "simpleExplanation": "الـ Props بيانات جاية للـ Component من الأب ومينفعش يغيرها، أما الـ State فبيانات بتاعته هو جوا وبنغيرها لما المستخدم يتفاعل مع الصفحة.",
+    "interviewPoints": [
+      "Props (Properties): بتتبعت من الـ Parent للـ Child وبتكون Read-only (Immutable) جوا الـ Child.",
+      "State: بيانات داخلية خاصة بالـ Component نفسه (Mutable عبر setState) وتغييرها بيعمل Re-render."
+    ],
+    "keywords": [
+      "Read-only",
+      "Parent to Child",
+      "Internal Data",
+      "Triggers Re-render"
+    ]
+  },
+  {
+    "id": 26,
+    "category": "React",
+    "topic": "Props & State",
+    "question": "ليه ممنوع نعدل الـ State مباشرة (Immutability)؟",
+    "simpleExplanation": "لو عدلتي جوا الـ Array أو Object مباشرة، React بيفتكر إن الحاجة متغيرتش ومش بيحدث الشاشة؛ فلازم تعملي نسخة جديدة الأول.",
+    "interviewPoints": [
+      "React بيعتمد على Shallow Comparison (بيقارن عنوان الـ Reference في الـ Memory).",
+      "تعديل نفس الـ Object بيسيب الـ Reference زي ما هو فـ React مش بيعمل Re-render.",
+      "الصح نعمل نسخة جديدة بالـ Spread Operator أو دوال زي map و filter."
+    ],
+    "keywords": [
+      "Immutability",
+      "Shallow Comparison",
+      "Reference Change",
+      "Spread Operator"
+    ],
+    "code": "// غلط ❌\nitems.push('New');\nsetItems(items);\n\n// صح ✅\nsetItems([...items, 'New']);"
+  },
+  {
+    "id": 27,
+    "category": "React",
+    "topic": "Props & State",
+    "question": "إيه هو الـ Lifting State Up وإمتى بنعمله؟",
+    "simpleExplanation": "لو اتنين Components إخوات محتاجين نفس المعلومة، بنرفع الـ State للأب اللي جامعهم عشان يديها للاتنين ويفضلوا متزامنين.",
+    "interviewPoints": [
+      "هو نقل الـ State من الـ Child Components لأقرب Common Parent مشترك بينهم.",
+      "الأب بيحتفظ بالـ State ويبعت القيمة ودالة التعديل للاتنين عبر Props كـ Single Source of Truth."
+    ],
+    "keywords": [
+      "Common Parent",
+      "Shared State",
+      "Single Source of Truth"
+    ]
+  },
+  {
+    "id": 28,
+    "category": "React",
+    "topic": "Lists & Keys",
+    "question": "ليه بنحط key في الـ Lists ومينفعش نستخدم الـ index دايماً؟",
+    "simpleExplanation": "الـ key زي البطاقة الشخصية لكل عنصر عشان React يعرف مين اتمسح ومين اتضاف من غير ما يلخبط باقي العناصر.",
+    "interviewPoints": [
+      "الـ key بيساعد React في الـ Reconciliation عشان يتتبع كل عنصر اتغير أو اتنقل.",
+      "استخدام الـ index بيعمل مشاكل لو القائمة بيحصل فيها إضافة أو حذف أو ترتيب، لأنه بيلخبط الـ State بتاعة العناصر (زي الـ Inputs)."
+    ],
+    "keywords": [
+      "Reconciliation",
+      "Unique Identifier",
+      "Array Index Pitfall"
+    ],
+    "code": "{items.map((item) => (\n  <ItemCard key={item.id} data={item} />\n))}"
+  },
+  {
+    "id": 29,
+    "category": "React",
+    "topic": "Hooks - useState",
+    "question": "إمتى نستخدم Functional Update في useState؟ وإيه هو الـ Batching؟",
+    "simpleExplanation": "لو القيمة الجديدة معتمدة على القديمة (زي عداد)، لازم نستخدم دالة prev => prev + 1 عشان التحديثات متضيعش.",
+    "interviewPoints": [
+      "Batching: React بيجمع كذا setState في نفس الحدث وينفذهم في Re-render واحد.",
+      "لو كتبنا setCount(count + 1) مرتين هيقرأوا نفس القيمة القديمة، أما Functional Update (prev => prev + 1) بياخد أحدث قيمة دايماً."
+    ],
+    "keywords": [
+      "State Batching",
+      "Functional Update",
+      "Stale State"
+    ],
+    "code": "setCount(prev => prev + 1);"
+  },
+  {
+    "id": 30,
+    "category": "React",
+    "topic": "Hooks - useEffect",
+    "question": "إزاي بيشتغل الـ Dependency Array في useEffect؟ وإيه هي الـ Cleanup Function؟",
+    "simpleExplanation": "useEffect بتشغل كود جانبي بعد الرسم، والـ Array بتحدد يشتغل إمتى، والـ Cleanup بتنضف وراه لما نسيب الصفحة.",
+    "interviewPoints": [
+      "بدون Array: يشتغل بعد كل Render. Array فاضية []: يشتغل مرة واحدة بس On Mount.",
+      "Array بمتغيرات [id]: يشتغل عند التحميل وكل ما id يتغير.",
+      "Cleanup Function: الدالة المرجعة بـ return لتنظيف الـ Timers أو الـ Listeners عند الـ Unmount لمنع Memory Leaks."
+    ],
+    "keywords": [
+      "Side Effects",
+      "Dependency Array",
+      "Mount / Unmount",
+      "Cleanup Function",
+      "Memory Leak"
+    ],
+    "code": "useEffect(() => {\n  const timer = setInterval(() => console.log('Tick'), 1000);\n  return () => clearInterval(timer);\n}, []);"
+  },
+  {
+    "id": 31,
+    "category": "React",
+    "topic": "API Integration",
+    "question": "إزاي تتعاملي مع الـ API في React بشكل احترافي؟",
+    "simpleExplanation": "مش بنجيب الداتا وخلاص؛ لازم ندير 3 حالات (Loading و Error و Data) ونلغي الطلب القديم لو المستخدم قفل الصفحة قبل ما يخلص.",
+    "interviewPoints": [
+      "بندير 3 States: isLoading للـ Spinner، و error لعرض رسالة الخطأ، و data.",
+      "بنستخدم async/await جوا دالة داخل useEffect مع try / catch / finally.",
+      "بنستخدم AbortController في الـ Cleanup لإلغاء الطلب القديم ومنع الـ Race Condition."
+    ],
+    "keywords": [
+      "Loading/Error States",
+      "try/catch/finally",
+      "AbortController",
+      "Race Condition"
+    ],
+    "code": "useEffect(() => {\n  const controller = new AbortController();\n  fetch('/api/items', { signal: controller.signal })\n    .then(res => res.json())\n    .then(setData);\n  return () => controller.abort();\n}, []);"
+  },
+  {
+    "id": 32,
+    "category": "React",
+    "topic": "React Router",
+    "question": "إزاي React Router بيغير الصفحات من غير Reload؟ وإيه هي الـ Protected Routes؟",
+    "simpleExplanation": "مواقع React صفحة واحدة (SPA)؛ الـ Router بيغير الرابط ويعرض الـ Component المناسب مكانه من غير ما يحمل الموقع من السيرفر تاني.",
+    "interviewPoints": [
+      "بيعتمد على Browser History API لعمل Client-side Routing بدون Full Page Reload.",
+      "بنستخدم Link بدل <a>، و useParams لقراءة متغيرات الرابط، و useNavigate للتنقل البرمجي.",
+      "Protected Routes: Component بيتأكد من وجود Token/User ولو مفيش بيحول المستخدم لصفحة الـ Login."
+    ],
+    "keywords": [
+      "SPA",
+      "Client-side Routing",
+      "useParams",
+      "useNavigate",
+      "Protected Routes"
+    ]
+  },
+  {
+    "id": 33,
+    "category": "React",
+    "topic": "Forms",
+    "question": "ما الفرق بين Controlled و Uncontrolled Components؟",
+    "simpleExplanation": "في Controlled، React هو اللي ماسك قيمة الـ Input لحظة بلحظة في State. في Uncontrolled، المتصفح محتفظ بالقيمة وبنقراها عند الحاجة بـ useRef.",
+    "interviewPoints": [
+      "Controlled: قيمة الـ Input مربوطة بـ State (value + onChange)، وممتازة للـ Live Validation.",
+      "Uncontrolled: الـ DOM بيخزن القيمة وبنجيبها بـ useRef عند الـ Submit (مناسبة للفورمات البسيطة أو input type='file')."
+    ],
+    "keywords": [
+      "Single Source of Truth",
+      "Live Validation",
+      "useRef"
+    ],
+    "code": "<input value={name} onChange={(e) => setName(e.target.value)} />"
+  },
+  {
+    "id": 34,
+    "category": "React",
+    "topic": "State Management",
+    "question": "إيه هو Props Drilling وإمتى نستخدم Context API مقابل Redux/Zustand؟",
+    "simpleExplanation": "Props Drilling يعني تمرير بيانات على Components كتير في النص ملهاش علاقة بيها. Context بتبعتها مباشرة، بس مش للبيانات اللي بتتغير كل ثانية.",
+    "interviewPoints": [
+      "Context API ممتازة للبيانات اللي بتتغير قليل زي Theme أو اللغة أو Current User.",
+      "عيب Context: أي تغيير فيها بيعمل Re-render لكل الـ Consumers.",
+      "Redux Toolkit أو Zustand أفضل للـ State المعقدة والمتغيرة باستمرار لأنهم بيعملوا Selective Re-rendering."
+    ],
+    "keywords": [
+      "Props Drilling",
+      "Global State",
+      "Re-render Optimization",
+      "Zustand / Redux"
+    ]
+  },
+  {
+    "id": 35,
+    "category": "React",
+    "topic": "Performance",
+    "question": "ما الفرق بين useMemo و useCallback و React.memo؟",
+    "simpleExplanation": "التلاتة هدفهم منع إعادة الحساب أو الرسم من غير لازمة: واحدة بتحفظ قيمة، وواحدة بتحفظ دالة، وواحدة بتحفظ Component.",
+    "interviewPoints": [
+      "useMemo: بتحفظ ناتج عملية حسابية تقيلة (Memoized Value) ومبتعيدهاش غير لما الـ Dependencies تتغير.",
+      "useCallback: بتحفظ مرجع دالة (Memoized Function) عشان متتعملش من جديد في كل Render.",
+      "React.memo: بتمنع Re-render للـ Child Component لو الـ Props بتاعته متغيرتش."
+    ],
+    "keywords": [
+      "Memoization",
+      "Referential Equality",
+      "Prevent Re-renders"
+    ],
+    "code": "const total = useMemo(() => calcTotal(items), [items]);\nconst handleClick = useCallback(() => doSomething(id), [id]);"
+  },
+  {
+    "id": 36,
+    "category": "React",
+    "topic": "Advanced Hooks & Optimization",
+    "question": "إيه استخدامات useRef؟ وإيه هي الـ Custom Hooks و Code Splitting؟",
+    "simpleExplanation": "useRef صندوق بيحفظ قيمة بين الـ Renders من غير ما يعمل تحديث للشاشة (أو يمسك عنصر DOM)، والـ Custom Hook دالة بتجمع منطق متكرر.",
+    "interviewPoints": [
+      "useRef: بتخزن قيمة في .current طول عمر الـ Component من غير ما تسبب Re-render، أو للوصول لعنصر DOM زي inputRef.current.focus().",
+      "Custom Hooks: دالة اسمها بيبدأ بـ use (زي useFetch) لإعادة استخدام الـ Stateful Logic.",
+      "Code Splitting: استخدام React.lazy و Suspense لتحميل الصفحات عند الحاجة بس وتصغير حجم الـ Bundle."
+    ],
+    "keywords": [
+      "Mutable Reference",
+      "No Re-render",
+      "Custom Hooks",
+      "React.lazy",
+      "Suspense"
+    ]
   }
 ]
