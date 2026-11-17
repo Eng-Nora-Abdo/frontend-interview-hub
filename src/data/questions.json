@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "category": "JavaScript",
+    "topic": "Variables & Scope",
+    "question": "ما الفرق بين var و let و const؟ وما هو الـ Hoisting؟",
+    "simpleExplanation": "التلاتة بنعرف بيهم متغيرات، بس var قديمة وبتتعدى حدود الأقواس {}، أما let و const محكومين جوا الأقواس بس.",
+    "interviewPoints": [
+      "var: بتكون Function-scoped، ينفع تتعرف وتتعدل تاني، وبتترفع بالـ Hoisting بقيمة undefined.",
+      "let و const: بيكونوا Block-scoped، وبيدخلوا في الـ Temporal Dead Zone (TDZ) لو استخدمناهم قبل سطر التعريف.",
+      "let ينفع قيمتها تتغير، إنما const مينفعش نعيد تعيينها (Reassign)."
+    ],
+    "keywords": ["Function-scoped", "Block-scoped", "Hoisting", "TDZ", "ReferenceError"],
+    "code": "console.log(a); // undefined\nvar a = 5;\n\nconsole.log(b); // ReferenceError\nlet b = 10;"
+  },
+  {
+    "id": 2,
+    "category": "JavaScript",
+    "topic": "Data Types",
+    "question": "ما الفرق بين Primitive Types و Reference Types؟",
+    "simpleExplanation": "الأنواع البسيطة بتتنسخ كقيمة مستقلة، أما الـ Objects والـ Arrays فبتتنسخ كعنوان في الذاكرة (لو عدلتي النسخة، الأصل بيتعدل).",
+    "interviewPoints": [
+      "Primitive Types (string, number, boolean, undefined, null): بتتخزن وتتنسخ By Value وبتكون Immutable.",
+      "Reference Types (Object, Array, Function): بتتخزن وتتنسخ By Reference في الـ Memory.",
+      "معلومة إنترفيو: typeof null بترجع 'object' (Bug قديم)، وبنفحص الـ Array بـ Array.isArray()."
+    ],
+    "keywords": ["Primitive", "Reference", "By Value", "By Reference", "Array.isArray"],
+    "code": "let obj1 = { name: 'Nora' };\nlet obj2 = obj1;\nobj2.name = 'Sara'; // obj1.name بقت Sara"
+  },
+  {
+    "id": 3,
+    "category": "JavaScript",
+    "topic": "Equality",
+    "question": "ما الفرق بين == و === في JavaScript؟",
+    "simpleExplanation": "علامتين == بتقارن القيمة بس وممكن تحول النوع من نفسها، إنما تلات علامات === بتقارن القيمة والنوع مع بعض.",
+    "interviewPoints": [
+      "== (Loose Equality): بتقارن القيمة بس وبتعمل Type Coercion (تحويل تلقائي للنوع).",
+      "=== (Strict Equality): بتقارن القيمة والنوع مع بعض من غير تحويل، ودي الأصح دايماً."
+    ],
+    "keywords": ["Loose Equality", "Strict Equality", "Type Coercion"],
+    "code": "console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false"
+  },
+  {
+    "id": 4,
+    "category": "JavaScript",
+    "topic": "Closures",
+    "question": "إيه هو الـ Closure وإمتى بنستخدمه؟",
+    "simpleExplanation": "دالة جوا دالة؛ لما الدالة الكبيرة تخلص شغل وتتقفل، الدالة الصغيرة بتفضل فاكرة متغيراتها وتقدر تستخدمها.",
+    "interviewPoints": [
+      "الـ Inner Function بتحتفظ بالوصول لمتغيرات الـ Outer Function حتى بعد انتهاء تنفيذها.",
+      "بنستخدمه في حماية البيانات (Data Privacy)، والـ Memoization، وبناء دوال زي Debounce."
+    ],
+    "keywords": ["Lexical Scope", "Inner Function", "Data Privacy", "State Persistence"],
+    "code": "function createCounter() {\n  let count = 0;\n  return () => ++count;\n}\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2"
+  },
+  {
+    "id": 5,
+    "category": "JavaScript",
+    "topic": "Event Loop",
+    "question": "إزاي بيشتغل الـ Event Loop في JavaScript؟",
+    "simpleExplanation": "الجافاسكريبت بتنفذ الكود العادي سطر بسطر الأول، والحاجات اللي بتاخد وقت بتستنى في صفين؛ صف للـ Promises (أولوية أولى) وصف للـ Timers (أولوية تانية).",
+    "interviewPoints": [
+      "JavaScript هي Single-threaded فالكود المتزامن (Synchronous) بيتنفذ الأول في الـ Call Stack.",
+      "العمليات المؤجلة بتروح للـ Web APIs ولما تجهز بتدخل Microtask Queue (زي Promise) أو Macrotask Queue (زي setTimeout).",
+      "أول ما الـ Call Stack يفضى، الـ Event Loop بيخلص كل الـ Microtasks الأول قبل ما ينفذ أي Macrotask."
+    ],
+    "keywords": ["Single-threaded", "Call Stack", "Web APIs", "Microtask Queue", "Macrotask Queue"],
+    "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');\n// Output: 1, 4, 3, 2"
+  },
+  {
+    "id": 6,
+    "category": "JavaScript",
+    "topic": "Async JS",
+    "question": "ما الفرق بين Promises و async/await؟",
+    "simpleExplanation": "الاتنين بنستنى بيهم داتا من سيرفر مثلاً، بس async/await طريقة أحدث وأبسط في الكتابة والقراءة وبتشتغل فوق الـ Promises.",
+    "interviewPoints": [
+      "async/await هي Syntactic Sugar مبنية فوق الـ Promises بتخلي الكود يبان كأنه متزامن.",
+      "بتحل مشكلة الـ Callback Hell وبتسهل القراءة جداً.",
+      "بنعالج الأخطاء في async/await باستخدام try/catch بدل .then() و .catch()."
+    ],
+    "keywords": ["Syntactic Sugar", "Callback Hell", "Readability", "try/catch"],
+    "code": "async function getData() {\n  try {\n    const res = await fetch('/api/user');\n    return await res.json();\n  } catch (err) {\n    console.error(err);\n  }\n}"
+  },
+  {
+    "id": 7,
+    "category": "JavaScript",
+    "topic": "Promises",
+    "question": "ما الفرق بين Promise.all و Promise.allSettled و Promise.race؟",
+    "simpleExplanation": "طرق بنشغل بيها كذا Request مع بعض: واحدة بتفشل لو أي طلب وقع، والتانية بتستنى الكل يخلص، والتالتة بتاخد أسرع واحد.",
+    "interviewPoints": [
+      "Promise.all: بتستنى الكل ينجح، ولو واحدة فشلت بترفض فوراً (Fail-fast).",
+      "Promise.allSettled: بتستنى الكل يخلص وترجع حالة كل واحدة (fulfilled أو rejected).",
+      "Promise.race: بترجع نتيجة أول Promise يخلص سواء نجح أو فشل."
+    ],
+    "keywords": ["Fail-fast", "Fulfilled", "Rejected", "Concurrent Requests"],
+    "code": "const results = await Promise.allSettled([fetchA(), fetchB()]);"
+  },
+  {
+    "id": 8,
+    "category": "JavaScript",
+    "topic": "Objects",
+    "question": "ما الفرق بين Shallow Copy و Deep Copy؟",
+    "simpleExplanation": "النسخة السطحية (Shallow) بتنسخ أول طبقة بس، إنما النسخة العميقة (Deep) بتنسخ كل الطبقات المتداخلة كنسخة مستقلة تماماً.",
+    "interviewPoints": [
+      "Shallow Copy ({...obj} أو Object.assign): بتنسخ Top-level properties بس، وأي Nested Object جوا بيفضل مرتبط بنفس الـ Reference.",
+      "Deep Copy (structuredClone(obj)): بتنسخ كل المستويات المتداخلة نسخة مستقلة في الـ Memory."
+    ],
+    "keywords": ["Spread Operator", "Top-level properties", "Nested Objects", "structuredClone"],
+    "code": "const shallow = { ...original };\nconst deep = structuredClone(original);"
+  },
+  {
+    "id": 9,
+    "category": "JavaScript",
+    "topic": "this Keyword",
+    "question": "إزاي قيمة this بتتحدد في Regular Function مقابل Arrow Function؟",
+    "simpleExplanation": "في الدالة العادية، this بتشاور على اللي ناداها. في الـ Arrow Function، مفيش ليها this خاصة وبتاخدها من المكان اللي اتكتبت فيه.",
+    "interviewPoints": [
+      "Regular Function: قيمة this بتتحدد وقت النداء (Execution Context) حسب الـ Caller.",
+      "Arrow Function: ملهاش this خاصة بيها، بتورثها من الـ Lexical Scope (الـ Parent Scope)."
+    ],
+    "keywords": ["Execution Context", "Caller", "Lexical Scope", "Arrow Function"],
+    "code": "const user = {\n  name: 'Nora',\n  regular() { return this.name; }, // 'Nora'\n  arrow: () => this.name         // undefined\n};"
+  },
+  {
+    "id": 10,
+    "category": "JavaScript",
+    "topic": "this Binding",
+    "question": "ما الفرق بين call و apply و bind؟",
+    "simpleExplanation": "التلاتة بيحددوا قيمة this للدالة: call و apply بيشغلوها فوراً، إنما bind بترجعلك نسخة جديدة تشغليها بعدين.",
+    "interviewPoints": [
+      "call: بتشغل الدالة فوراً وتبعت الـ Arguments متفرقة (مفصولة بـ Comma).",
+      "apply: بتشغل الدالة فوراً بس بتبعت الـ Arguments جوا Array.",
+      "bind: بترجع New Function مربوطة بالـ this دي عشان تشغليها لاحقاً."
+    ],
+    "keywords": ["Explicit Binding", "Immediate Execution", "Returns New Function"],
+    "code": "greet.call(user, 'Cairo');\ngreet.apply(user, ['Cairo']);\nconst fn = greet.bind(user, 'Cairo');\nfn();"
+  },
+  {
+    "id": 11,
+    "category": "JavaScript",
+    "topic": "Arrays",
+    "question": "ما الفرق بين map و forEach و filter و find و reduce؟",
+    "simpleExplanation": "دوال للّف على الـ Array: واحدة بتطبع بس، وواحدة بتعدل وترجع نسخة، واتنين بيدوروا، وواحدة بتجمع الكل في قيمة واحدة.",
+    "interviewPoints": [
+      "forEach: بتنفذ كود على كل عنصر ومش بترجع حاجة (undefined).",
+      "map: بتعدل كل عنصر وترجع New Array بنفس الطول (مهمة في React).",
+      "filter: بترجع New Array فيها كل العناصر المطابقة للشرط.",
+      "find: بترجع أول عنصر بس يحقق الشرط وتوقف بحث.",
+      "reduce: بتجمع العناصر كلها في Single Value."
+    ],
+    "keywords": ["Immutability", "New Array", "First Match", "Single Value"],
+    "code": "const nums = [1, 2, 3, 4];\nconst doubled = nums.map(n => n * 2);        // [2, 4, 6, 8]\nconst evens = nums.filter(n => n % 2 === 0); // [2, 4]\nconst first = nums.find(n => n % 2 === 0);   // 2\nconst sum = nums.reduce((acc, n) => acc + n, 0); // 10"
+  },
+  {
+    "id": 12,
+    "category": "JavaScript",
+    "topic": "ES6+",
+    "question": "إيه هو الـ Destructuring والـ Rest/Spread Operator؟",
+    "simpleExplanation": "الـ Destructuring بيطلع قيم من Object أو Array في متغيرات بسرعة، والـ ... إما بتفرد العناصر (Spread) أو بتجمعهم (Rest).",
+    "interviewPoints": [
+      "Destructuring: استخراج القيم من Object أو Array مباشرة في متغيرات.",
+      "Spread (...): بتفرد عناصر Array أو Object جوا واحد جديد (لعمل نسخة أو دمج).",
+      "Rest (...): بتجمع باقي الـ Arguments في Array واحدة جوا الدالة."
+    ],
+    "keywords": ["Destructuring", "Spread Operator", "Rest Parameters"],
+    "code": "const { name, role } = user;\nconst merged = [...arr1, ...arr2];\nfunction sum(...nums) { return nums.reduce((a, b) => a + b, 0); }"
+  },
+  {
+    "id": 13,
+    "category": "JavaScript",
+    "topic": "DOM & Events",
+    "question": "إيه هو الـ Event Bubbling وإيه فايدة الـ Event Delegation؟",
+    "simpleExplanation": "لما تضغطي على عنصر صغير، الضغطة بتطلع لفوق للأب. بنستغل ده بإننا نحط Event واحد على الأب بدل ما نحط 100 Event على الأبناء.",
+    "interviewPoints": [
+      "Event Bubbling: الـ Event بيتصاعد من العنصر الابن للأب ثم الجد لحد document.",
+      "Event Delegation: بنحط Listener واحد على الأب ونعرف مين اتداس عليه بـ event.target.",
+      "فايدته: توفير الـ Memory وتحسين الأداء، وبيشتغل مع العناصر المضافة ديناميكياً."
+    ],
+    "keywords": ["Event Bubbling", "Event Delegation", "event.target", "stopPropagation"],
+    "code": "ul.addEventListener('click', (e) => {\n  if (e.target.tagName === 'LI') console.log(e.target.textContent);\n});"
+  },
+  {
+    "id": 14,
+    "category": "JavaScript",
+    "topic": "Performance",
+    "question": "ما الفرق بين Debouncing و Throttling؟",
+    "simpleExplanation": "الاتنين بيقللوا عدد مرات تشغيل الدالة: Debounce بتستنى لما المستخدم يوقف، وThrottle بتشغلها مرة واحدة كل فترة ثابتة.",
+    "interviewPoints": [
+      "Debouncing: بيأجل التنفيذ لحد ما الحدث يوقف لمدة محددة (ممتاز للـ Search Input).",
+      "Throttling: بينفذ الدالة مرة واحدة كل فترة زمنية ثابتة مهما الحدث اتكرر (ممتاز للـ Scroll)."
+    ],
+    "keywords": ["Debouncing", "Throttling", "Rate Limiting", "clearTimeout"],
+    "code": "function debounce(fn, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n}"
+  },
+  {
+    "id": 15,
+    "category": "JavaScript",
+    "topic": "Browser Storage",
+    "question": "ما الفرق بين localStorage و sessionStorage و Cookies؟",
+    "simpleExplanation": "localStorage بتفضل محفوظة دايماً، sessionStorage بتتمسح لما تقفلي التاب، والـ Cookies بتتبعت للسيرفر مع كل طلب.",
+    "interviewPoints": [
+      "localStorage: دائمة حتى بعد قفل المتصفح (~5MB) ومبتتبعتش للسيرفر.",
+      "sessionStorage: بتنتهي أول ما تقفلي الـ Tab.",
+      "Cookies: صغيرة (~4KB)، ليها تاريخ انتهاء، وبتتبعت مع كل HTTP Request (ممتازة للـ Auth مع HttpOnly)."
+    ],
+    "keywords": ["Persistence", "Tab-scoped", "HTTP Requests", "HttpOnly"],
+    "code": "localStorage.setItem('theme', 'dark');\nconst theme = localStorage.getItem('theme');"
+  },
+  {
+    "id": 16,
+    "category": "JavaScript",
+    "topic": "Output Question",
+    "question": "توقعي الناتج: استخدام var مقابل let جوا for loop مع setTimeout؟",
+    "simpleExplanation": "var بتشارك نفس المتغير بين كل اللفات فبتطبع آخر رقم بس، إنما let بتعمل نسخة جديدة لكل لفة.",
+    "interviewPoints": [
+      "مع var: اللوب بتخلص قبل ما setTimeout يشتغل، وكلهم بيشاوروا على نفس الـ i فيطبع 3 تلات مرات.",
+      "مع let: لأنها Block-scoped، كل لفة ليها نسخة مستقلة فيطبع 0, 1, 2."
+    ],
+    "keywords": ["Block Scope", "Closure", "Loop Scope"],
+    "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100); // 3, 3, 3\n}\nfor (let j = 0; j < 3; j++) {\n  setTimeout(() => console.log(j), 100); // 0, 1, 2\n}"
+  },
+  {
+    "id": 17,
+    "category": "JavaScript",
+    "topic": "Output Question",
+    "question": "توقعي الناتج: الجمع مع النصوص وتحويل الأنواع (Type Coercion)",
+    "simpleExplanation": "علامة + لو جنبها نص بتلزق الكلام في بعضه، أما لو جت قبل نص لوحدها (+'10') بتحوله لرقم.",
+    "interviewPoints": [
+      "1 + '2' + 3: التنفيذ من الشمال لليمين، فبتتحول لنص وتطلع '123'.",
+      "1 + 2 + '3': بتجمع 1+2 الأول (3) وبعدين تدمجها مع '3' فتطلع '33'.",
+      "+'10' + 5: الـ Unary Plus بتحول '10' لرقم 10، فالناتج 15."
+    ],
+    "keywords": ["Type Coercion", "Unary Plus", "Operator Precedence"],
+    "code": "console.log(1 + '2' + 3); // '123'\nconsole.log(1 + 2 + '3'); // '33'\nconsole.log(+'10' + 5);   // 15"
+  },
+  {
+    "id": 18,
+    "category": "JavaScript",
+    "topic": "Coding Problem",
+    "question": "إزاي تشيلي العناصر المكررة من Array؟",
+    "simpleExplanation": "بنحط الـ Array جوا Set (لأنها مبتقبلش التكرار) وبعدين نرجعها Array تاني بالـ Spread Operator.",
+    "interviewPoints": [
+      "أسرع طريقة حديثة هي [...new Set(arr)].",
+      "أو نستخدم filter مع indexOf لو مطلوب من غير Set."
+    ],
+    "keywords": ["Set", "Spread Operator", "Unique Values"],
+    "code": "const arr = [1, 2, 2, 3, 4, 4];\nconst unique = [...new Set(arr)]; // [1, 2, 3, 4]"
+  },
+  {
+    "id": 19,
+    "category": "JavaScript",
+    "topic": "Data Types",
+    "question": "ما الفرق بين null و undefined؟",
+    "simpleExplanation": "undefined معناها متغير اتعرف بس لسه محطيتيش فيه قيمة، إنما null معناها إنتي بنفسك حطيتي فيه قيمة فاضية عن قصد.",
+    "interviewPoints": [
+      "undefined: القيمة الافتراضية لمتغير متعرف من غير قيمة، أو خاصية مش موجودة في Object.",
+      "null: قيمة مقصودة بتحطها المبرمجة عشان تعبر عن لا شيء (Intentional absence of value)."
+    ],
+    "keywords": ["Default value", "Intentional empty value", "typeof null"],
+    "code": "let a;\nconsole.log(a); // undefined\nlet b = null;\nconsole.log(b); // null"
+  },
+  {
+    "id": 20,
+    "category": "JavaScript",
+    "topic": "Operators & Coercion",
+    "question": "ما هي الـ Truthy & Falsy Values؟ وما الفرق بين || و ??؟",
+    "simpleExplanation": "في 6 قيم بس جافاسكريبت بتعتبرهم false والباقي كله true. وعلامة ?? أحدث وأدق من || لما تتعاملي مع رقم 0 أو نص فاضي.",
+    "interviewPoints": [
+      "الـ Falsy Values هي: false, 0, '', null, undefined, NaN (وأي حاجة غيرهم Truthy).",
+      "||: بترجع القيمة التانية لو الأولى أي Falsy value (فلو الرقم 0 هتتجاهله).",
+      "?? (Nullish Coalescing): بترجع القيمة التانية بس لو الأولى null أو undefined."
+    ],
+    "keywords": ["Falsy values", "Nullish Coalescing (??)", "Short-circuiting", "Optional Chaining (?.)"],
+    "code": "const count = 0;\nconsole.log(count || 10); // 10\nconsole.log(count ?? 10); // 0"
+  },
+  {
+    "id": 21,
+    "category": "JavaScript",
+    "topic": "Functions",
+    "question": "إيه هي الـ Higher-Order Function والـ Pure Function؟",
+    "simpleExplanation": "الـ Higher-Order دالة بتستقبل أو بترجع دالة تانية (زي map). والـ Pure Function دالة نضيفة نفس المدخلات دايماً تطلع نفس النتيجة ومبتعدلش حاجة براها.",
+    "interviewPoints": [
+      "Higher-Order Function (HOF): دالة بتاخد دالة كـ Argument أو بترجع دالة (زي map و filter).",
+      "Pure Function: دالة مفيش ليها Side Effects (مبتعدلش متغيرات خارجية) ونفس الـ Input دايماً يرجع نفس الـ Output."
+    ],
+    "keywords": ["Higher-Order Function", "Pure Function", "No Side Effects", "Deterministic"],
+    "code": "const add = (a, b) => a + b; // Pure Function\nconst doubled = [1, 2, 3].map(n => n * 2); // map is a HOF"
+  },
+  {
+    "id": 22,
+    "category": "JavaScript",
+    "topic": "ES Modules",
+    "question": "ما الفرق بين export default و Named export؟",
+    "simpleExplanation": "في الملف الواحد تقدري تعملي export default مرة واحدة بس وتستورديه بأي اسم، إنما الـ Named export تقدري تعمليه كذا مرة بس لازم تستورديه بنفس الاسم جوا {}.",
+    "interviewPoints": [
+      "Default Export: قيمة واحدة رئيسية من الملف، بنعملها import من غير أقواس {} وبأي اسم.",
+      "Named Export: كذا دالة أو Component من نفس الملف، لازم نعملهم import بنفس الاسم جوا {}."
+    ],
+    "keywords": ["ES Modules", "Named Export", "Default Export"],
+    "code": "// Named\nexport const API_URL = '...';\nimport { API_URL } from './config';\n\n// Default\nexport default Button;\nimport MyButton from './Button';"
+  },
+  {
+    "id": 23,
+    "category": "JavaScript",
+    "topic": "OOP & Prototypes",
+    "question": "إيه هو الـ Prototype في JavaScript؟",
+    "simpleExplanation": "ده النظام اللي الجافاسكريبت بتستخدمه عشان الـ Objects والـ Arrays تورث دوال جاهزة (زي .map() و .length) من غير ما نكتبها من الصفر.",
+    "interviewPoints": [
+      "كل Object في JS ليه مرجع مخفي اسمه Prototype.",
+      "لو دورتي على خاصية ومش موجودة في الـ Object، JS بتدور عليها في الـ Prototype Chain لحد ما تلاقيها أو توصل لـ null."
+    ],
+    "keywords": ["Prototype Chain", "Inheritance", "Object.prototype"]
+  }
+]
