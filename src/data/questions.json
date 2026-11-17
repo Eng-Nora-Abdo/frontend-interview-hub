@@ -653,5 +653,188 @@
       "React.lazy",
       "Suspense"
     ]
+  },
+  {
+    "id": 37,
+    "category": "HTML & CSS",
+    "topic": "Semantic HTML",
+    "question": "إيه هو الـ Semantic HTML وإيه فايدته؟",
+    "simpleExplanation": "استخدام وسوم ليها معنى واضح (زي header و nav و main) بدل ما نكتب كل حاجة بـ div وخلاص.",
+    "interviewPoints": [
+      "بيحسن ترتيب الموقع في محركات البحث (SEO) لأن جوجل بيفهم هيكل الصفحة بسهولة.",
+      "بيساعد قارئات الشاشة (Screen Readers) لذوي الهمم (Accessibility).",
+      "بيخلي الكود أنضف وأسهل في القراءة والصيانة للمبرمجين."
+    ],
+    "keywords": [
+      "Semantic Tags",
+      "SEO",
+      "Accessibility (a11y)",
+      "Screen Readers"
+    ],
+    "code": "<header>\n  <nav>...</nav>\n</header>\n<main>\n  <article>...</article>\n</main>"
+  },
+  {
+    "id": 38,
+    "category": "HTML & CSS",
+    "topic": "Box Model",
+    "question": "إيه هو الـ CSS Box Model؟ وإيه فايدة box-sizing: border-box؟",
+    "simpleExplanation": "كل عنصر في الصفحة عبارة عن صندوق من 4 طبقات، و border-box بتمنع الـ Padding والـ Border إنهم يكبّروا عرض العنصر عن المقاس اللي حددتيه.",
+    "interviewPoints": [
+      "الـ Box Model بيتكون من: Content + Padding + Border + Margin.",
+      "في الوضع الافتراضي (content-box)، الـ Padding والـ Border بيتجمعوا فوق العرض الكلي فالعنصر بيكبر.",
+      "مع border-box، العرض والارتفاع بيكونوا شاملين الـ Padding والـ Border وده بيسهل التصميم جداً."
+    ],
+    "keywords": [
+      "Box Model",
+      "content-box",
+      "border-box",
+      "Layout Sizing"
+    ],
+    "code": "* {\n  box-sizing: border-box;\n}"
+  },
+  {
+    "id": 39,
+    "category": "HTML & CSS",
+    "topic": "Layout",
+    "question": "إمتى نستخدم Flexbox وإمتى نستخدم CSS Grid؟",
+    "simpleExplanation": "Flexbox لترتيب العناصر في اتجاه واحد (صف أو عمود)، إنما CSS Grid لتقسيم شبكة كاملة من صفوف وأعمدة مع بعض.",
+    "interviewPoints": [
+      "Flexbox: نظام 1D (بُعد واحد: صف أو عمود)، ممتاز للـ Navbars، الأزرار، وتوسيط العناصر.",
+      "CSS Grid: نظام 2D (بُعدين: صفوف وأعمدة معاً)، ممتاز لهيكل الصفحة الكامل (Page Layout) أو شبكات الكروت."
+    ],
+    "keywords": [
+      "1D Layout",
+      "2D Layout",
+      "Flexbox",
+      "CSS Grid",
+      "Responsive"
+    ]
+  },
+  {
+    "id": 40,
+    "category": "HTML & CSS",
+    "topic": "Positioning",
+    "question": "ما الفرق بين قيم position المختلفة (relative, absolute, fixed, sticky)؟",
+    "simpleExplanation": "كل قيمة بتحدد العنصر هيتحرك بالنسبة لإيه: لمكانه الأصلي، ولا لأقرب أب، ولا للشاشة كلها.",
+    "interviewPoints": [
+      "relative: بيتحرك بالنسبة لمكانه الأصلي ومكانه بيفضل محجوز.",
+      "absolute: بيتحرك بالنسبة لأقرب أب عنده position غير static ومش بيحجز مكان.",
+      "fixed: ثابت بالنسبة لشاشة المتصفح (Viewport) حتى مع الـ Scroll.",
+      "sticky: بيتصرف كـ relative لحد نقطة معينة في الـ Scroll وبعدين يثبت زي fixed."
+    ],
+    "keywords": [
+      "Viewport",
+      "Document Flow",
+      "Nearest Positioned Ancestor"
+    ]
+  },
+  {
+    "id": 41,
+    "category": "HTML & CSS",
+    "topic": "Units & Display",
+    "question": "ما الفرق بين px و em و rem؟ وما الفرق بين display: none و visibility: hidden؟",
+    "simpleExplanation": "rem معتمدة على مقاس الخط الأساسي للموقع كله (الأفضل للـ Responsive)، و display: none بتمسح مكان العنصر إنما visibility: hidden بتسيب مكانه فاضي.",
+    "interviewPoints": [
+      "px وحدة ثابتة، em نسبية لحجم خط الأب (Parent)، و rem نسبية لحجم خط العنصر الجذري (<html>).",
+      "display: none: بتشيل العنصر من الـ Layout ومبتحجزش مكانه.",
+      "visibility: hidden: بتخفي العنصر بصرياً بس مكانه بيفضل محجوز في الصفحة."
+    ],
+    "keywords": [
+      "Root Font Size",
+      "Responsive Units",
+      "Layout Space"
+    ]
+  },
+  {
+    "id": 42,
+    "category": "Web & APIs",
+    "topic": "Browser Internals",
+    "question": "إيه اللي بيحصل من أول ما تكتبي رابط موقع وتضغطي Enter لحد ما يفتح؟",
+    "simpleExplanation": "المتصفح بيجيب عنوان السيرفر (IP)، يبعتله طلب، يستلم ملف الـ HTML ويرسم الصفحة على الشاشة.",
+    "interviewPoints": [
+      "1. المتصفح بيدور على الـ IP الخاص بالدومين عبر الـ DNS.",
+      "2. بيفتح اتصال آمن (TCP + TLS Handshake) مع السيرفر.",
+      "3. بيبعت HTTP Request والسيرفر بيرد بملفات الموقع (HTML/CSS/JS).",
+      "4. المتصفح بيبني الـ DOM والـ CSSOM ويدمجهم في Render Tree ويعرض الصفحة."
+    ],
+    "keywords": [
+      "DNS Lookup",
+      "TCP/TLS",
+      "HTTP Request",
+      "DOM & CSSOM",
+      "Render Tree"
+    ]
+  },
+  {
+    "id": 43,
+    "category": "Web & APIs",
+    "topic": "HTTP & REST APIs",
+    "question": "إيه أشهر HTTP Status Codes؟ وما الفرق بين PUT و PATCH؟",
+    "simpleExplanation": "PUT بتبدل البيانات كلها، و PATCH بتعدل حتة صغيرة بس. وأكواد الـ HTTP بتعرفنا الطلب نجح (200) ولا الغلط مننا (400s) ولا من السيرفر (500s).",
+    "interviewPoints": [
+      "PUT: بتحدث المورد بالكامل (استبدال)، أما PATCH: بتحدث جزء محدد منه بس.",
+      "200 (OK) و 201 (Created): نجاح. 400 (Bad Request): خطأ في البيانات.",
+      "401 (Unauthorized): مش مسجل دخول. 403 (Forbidden): مسجل بس معندوش صلاحية.",
+      "404 (Not Found): غير موجود. 500 (Internal Server Error): عطل في السيرفر."
+    ],
+    "keywords": [
+      "PUT vs PATCH",
+      "Status Codes",
+      "401 vs 403",
+      "REST API"
+    ]
+  },
+  {
+    "id": 44,
+    "category": "Web & APIs",
+    "topic": "Web Security",
+    "question": "ما هو الـ CORS وليه بيحصل؟",
+    "simpleExplanation": "حماية في المتصفح بتمنع موقعك يكلم سيرفر على رابط تاني مختلف إلا لو السيرفر التاني سمح بكده.",
+    "interviewPoints": [
+      "CORS (Cross-Origin Resource Sharing) هي سياسة أمان في المتصفح (مش في السيرفر).",
+      "بتمنع الـ Frontend يكلم API على Domain أو Port مختلف إلا لو السيرفر رد بـ Header اسمه Access-Control-Allow-Origin."
+    ],
+    "keywords": [
+      "Same-Origin Policy",
+      "Cross-Origin",
+      "Access-Control-Allow-Origin",
+      "Browser Security"
+    ]
+  },
+  {
+    "id": 45,
+    "category": "Web & APIs",
+    "topic": "TypeScript",
+    "question": "في TypeScript: ما الفرق بين interface و type؟ وما الفرق بين any و unknown؟",
+    "simpleExplanation": "interface و type الاتنين بيوصفوا شكل الداتا بس interface بتتمدد وتتجمع. و unknown أأمن من any لأنها بتجبرك تتأكدي من النوع الأول.",
+    "interviewPoints": [
+      "interface: مخصصة لشكل الـ Objects وتدعم Declaration Merging، بينما type أعم وتقدر توصف Unions و Primitives.",
+      "any: بتلغي فحص الأنواع تماماً (غير آمنة)، أما unknown بتجبرك تعملي Type Narrowing (فحص النوع) قبل استخدام المتغير."
+    ],
+    "keywords": [
+      "Declaration Merging",
+      "Union Types",
+      "Type Narrowing",
+      "Type Safety"
+    ],
+    "code": "function handle(val: unknown) {\n  if (typeof val === 'string') {\n    console.log(val.toUpperCase());\n  }\n}"
+  },
+  {
+    "id": 46,
+    "category": "Web & APIs",
+    "topic": "Git",
+    "question": "في Git: ما الفرق بين git merge و git rebase؟ و reset مقابل revert؟",
+    "simpleExplanation": "merge بتحفظ التاريخ زي ما هو بدمج جديد، و rebase بترتب الـ Commits في خط واحد. و revert بتلغي بـ Commit جديد أأمن للعمل الجماعي.",
+    "interviewPoints": [
+      "git merge: بيدمج الفروع ويعمل Merge Commit جديد يحفظ التاريخ كما هو.",
+      "git rebase: بينقل الـ Commits بتاعتك فوق آخر تحديث للفرع التاني عشان يخلي التاريخ خطي.",
+      "git revert: بتلغي تعديل قديم بـ Commit جديد (آمنة على الفروع المشتركة)، عكس git reset اللي بتمسح من التاريخ."
+    ],
+    "keywords": [
+      "Linear History",
+      "Merge Commit",
+      "Safe Undo",
+      "Shared Branch"
+    ]
   }
 ]
